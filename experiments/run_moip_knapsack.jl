@@ -43,7 +43,7 @@ function runsolve(
     p :: Int,
     repetitions :: Int;
     binary :: Bool = false,
-    solver :: String = "4ti2",
+    solver :: String = "IPGBs",
     algorithm :: String = "grobnecon"
 )
     @assert family in ["A", "B", "C", "D"]
@@ -67,8 +67,7 @@ function runsolve(
             path = "./moip_instances/"
             fullname = path * filename
             MultiObjectiveInstances.write_to_file(knapsack, fullname)
-            kinit = knapsack_initial(knapsack)
-            _, _, stats = moip_gb_solve(knapsack, kinit, solver = solver)
+            _, _, stats = moip_gb_solve(fullname, solver = solver, use_nadir_bounds=false)
             print(family, " ", seed, " ", n, " ", m, " ", binary, " ")
             println(stats)
         end
