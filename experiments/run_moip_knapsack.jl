@@ -20,21 +20,9 @@ using IPGBs.MultiObjectiveTools
 
 using Logging
 using Random
-
-using CPLEX
-using Cbc
-
-function printheader(algorithm, num_objectives :: Int)
-    print("family seed n m bin ")
-    if algorithm == "grobnecon"
-        MultiObjectiveStats.header(num_objectives)
-    elseif algorithm == "augmecon"
-        #TODO: Use the same header in augmecon and a general solver
-        println("pareto totaltime timepayoff timesolver timemodel timenadir")
-    else
-        println("pareto totaltime solvertime nummodels")
-    end
-end
+using DataFrames
+using CSV
+using ProgressBars
 
 function runsolve(
     family :: String,
@@ -47,7 +35,6 @@ function runsolve(
     algorithm :: String = "grobnecon"
 )
     @assert family in ["A", "B", "C", "D"]
-    printheader(algorithm, p)
     generator = knapsack_A
     if family == "A"
         generator = knapsack_A
@@ -58,7 +45,20 @@ function runsolve(
     elseif family == "D"
         generator = knapsack_D
     end
-    for seed in 1:repetitions
+    families = String[]
+    seeds = Int[]
+    ns = Int[]
+    ms = Int[]
+    bins = Bool[]
+    gb_total_times = Float64[]
+    normalform_times = Float64[]
+    total_times = Float64[]
+    solver_times = Float64[]
+    pareto_sizes = Int[]
+    gb_times = Vector{Float64}[]
+    gb_sizes = Vector{Int}[]
+    num_ips = Int[]
+    for seed in ProgressBar(1:repetitions)
         Random.seed!(seed)
         knapsack = generator(n, m, objectives = p, binary = binary)
         if algorithm == "grobnecon"
@@ -67,24 +67,50 @@ function runsolve(
             path = "./moip_instances/"
             fullname = path * filename
             MultiObjectiveInstances.write_to_file(knapsack, fullname)
-            _, _, stats = moip_gb_solve(fullname, solver = solver, use_nadir_bounds=false)
-            print(family, " ", seed, " ", n, " ", m, " ", binary, " ")
-            println(stats)
+            _, _, stats = moip_gb_solve(fullname, solver = solver)
+            push!(families, family)
+            push!(seeds, seed)
+            push!(ns, n)
+            push!(ms, m)
+            push!(bins, binary)
+            push!(gb_total_times, stats.gb_total_time)
+            push!(normalform_times, stats.normalform_time)
+            push!(total_times, stats.total_time)
+            push!(solver_times, stats.solver_time)
+            push!(pareto_sizes, stats.pareto_size)
+            push!(gb_times, stats.gb_times)
+            push!(gb_sizes, stats.gb_sizes)
+            push!(num_ips, stats.num_ips)
         end
-        flush(stdout)
     end
+    df = DataFrame(
+        "Family" => families,
+        "Seed" => seeds,
+        "n" => ns,
+        "m" => ms,
+        "Binary" => bins,
+        "gb_total_time" => gb_total_times,
+        "normalform_time" => normalform_times,
+        "total_time" => total_times,
+        "solver_time" => solver_times,
+        "pareto_size" => pareto_sizes,
+        "gb_times" => gb_times,
+        "gb_sizes" => gb_sizes,
+        "num_ips" => num_ips
+    )
+    CSV.write("results_$(family)_$(n).csv", df)
+    return df
 end
 
-if length(ARGS) > 0
-    if length(ARGS) < 2
-        error("Missing command line arguments.")
-    end
-
-    algorithm = ARGS[1]
-    if !(algorithm in [ "grobnecon" ])
-        error("Algorithm must be grobnecon.")
-    end
-    families = ARGS[2]
+function moip_experiment(
+    families :: String;
+    n :: Int = 50,
+    objectives :: Int = 2,
+    repetitions :: Int = 10,
+    binary :: Bool = false,
+    solver :: String = "IPGBs",
+    algorithm :: String = "grobnecon"
+)
     #Set up the log file for this run
     logfile = open("knapsack.log", "w")
     logger = SimpleLogger(logfile, Logging.Debug)
@@ -139,33 +165,6 @@ if length(ARGS) > 0
         exit()
     end
 
-    if length(ARGS) < 3
-        error("Missing command line arguments.")
-    end
-
-    n = parse(Int, ARGS[3])
-
-    if length(ARGS) >= 4
-        objectives = parse(Int, ARGS[4])
-    else
-        objectives = 2
-    end
-    if length(ARGS) >= 5
-        repetitions = parse(Int, ARGS[5])
-    else
-        repetitions = 1
-    end
-    if length(ARGS) >= 6
-        solver = ARGS[6]
-    else
-        solver = "4ti2"
-    end
-    binary = false
-    if length(ARGS) >= 7
-        if ARGS[7] == "binary"
-            binary = true
-        end
-    end
     if occursin("A", families)
         runsolve("A", n, 1, objectives, repetitions, solver=solver, binary=binary,
                  algorithm=algorithm)
