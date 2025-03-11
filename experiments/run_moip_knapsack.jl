@@ -35,6 +35,7 @@ function runsolve(
     algorithm :: String = "grobnecon"
 )
     @assert family in ["A", "B", "C", "D"]
+    println("Starting $n")
     generator = knapsack_A
     if family == "A"
         generator = knapsack_A
@@ -120,49 +121,61 @@ function moip_experiment(
     #et al (2019)?
     finished = false
     if families == "1"
-        runsolve("A", 50, 1, 2, 30, algorithm=algorithm)
-        runsolve("B", 50, 1, 2, 30, algorithm=algorithm)
-        runsolve("C", 50, 1, 2, 30, algorithm=algorithm)
-        runsolve("D", 50, 1, 2, 30, algorithm=algorithm)
+        df1 = runsolve("A", 50, 1, 2, 30, algorithm=algorithm)
+        df2 = runsolve("B", 50, 1, 2, 30, algorithm=algorithm)
+        df3 = runsolve("C", 50, 1, 2, 30, algorithm=algorithm)
+        df4 = runsolve("D", 50, 1, 2, 30, algorithm=algorithm)
+        df = vcat(df1, df2, df3, df4)
+        CSV.write("results_$(families).csv", df)
         finished = true
     elseif families == "2"
-        runsolve("D", 60, 1, 2, 30, algorithm=algorithm)
-        runsolve("D", 70, 1, 2, 30, algorithm=algorithm)
-        runsolve("D", 80, 1, 2, 30, algorithm=algorithm)
-        runsolve("D", 90, 1, 2, 30, algorithm=algorithm)
-        runsolve("D", 100, 1, 2, 30, algorithm=algorithm)
+        df1 = runsolve("D", 60, 1, 2, 30, algorithm=algorithm)
+        df2 = runsolve("D", 70, 1, 2, 30, algorithm=algorithm)
+        df3 = runsolve("D", 80, 1, 2, 30, algorithm=algorithm)
+        df4 = runsolve("D", 90, 1, 2, 30, algorithm=algorithm)
+        df5 = runsolve("D", 100, 1, 2, 30, algorithm=algorithm)
+        df = vcat(df1, df2, df3, df4, df5)
+        CSV.write("results_$(families).csv", df)
         finished = true
     elseif families == "3"
-        runsolve("A", 10, 1, 2, 30, binary = true, algorithm=algorithm)
-        runsolve("A", 15, 1, 2, 30, binary = true, algorithm=algorithm)
-        runsolve("A", 20, 1, 2, 30, binary = true, algorithm=algorithm)
-        runsolve("A", 25, 1, 2, 30, binary = true, algorithm=algorithm)
-        runsolve("A", 30, 1, 2, 30, binary = true, algorithm=algorithm)
+        df1 = runsolve("A", 10, 1, 2, 30, binary = true, algorithm=algorithm)
+        df2 = runsolve("A", 15, 1, 2, 30, binary = true, algorithm=algorithm)
+        df3 = runsolve("A", 20, 1, 2, 30, binary = true, algorithm=algorithm)
+        df4 = runsolve("A", 25, 1, 2, 30, binary = true, algorithm=algorithm)
+        df5 = runsolve("A", 30, 1, 2, 30, binary = true, algorithm=algorithm)
+        df = vcat(df1, df2, df3, df4, df5)
+        CSV.write("results_$(families).csv", df)
         finished = true
     elseif families == "4"
-        runsolve("A", 20, 2, 2, 30, algorithm=algorithm)
-        runsolve("A", 25, 2, 2, 30, algorithm=algorithm)
-        runsolve("A", 30, 2, 2, 30, algorithm=algorithm)
-        runsolve("A", 35, 2, 2, 30, algorithm=algorithm)
-        runsolve("A", 40, 2, 2, 30, algorithm=algorithm)
+        df1 = runsolve("A", 20, 2, 2, 30, algorithm=algorithm)
+        df2 = runsolve("A", 25, 2, 2, 30, algorithm=algorithm)
+        df3 = runsolve("A", 30, 2, 2, 30, algorithm=algorithm)
+        df4 = runsolve("A", 35, 2, 2, 30, algorithm=algorithm)
+        df5 = runsolve("A", 40, 2, 2, 30, algorithm=algorithm)
+        df = vcat(df1, df2, df3, df4, df5)
+        CSV.write("results_$(families).csv", df)
         finished = true
     elseif families == "5"
-        runsolve("A", 20, 3, 2, 30, algorithm=algorithm)
-        runsolve("A", 25, 3, 2, 30, algorithm=algorithm)
-        runsolve("A", 30, 3, 2, 30, algorithm=algorithm)
-        runsolve("A", 35, 3, 2, 30, algorithm=algorithm)
+        df1 = runsolve("A", 20, 3, 2, 30, algorithm=algorithm)
+        df2 = runsolve("A", 25, 3, 2, 30, algorithm=algorithm)
+        df3 = runsolve("A", 30, 3, 2, 30, algorithm=algorithm)
+        df4 = runsolve("A", 35, 3, 2, 30, algorithm=algorithm)
+        df = vcat(df1, df2, df3, df4)
+        CSV.write("results_$(families).csv", df)
         finished = true
     elseif families == "6"
-        runsolve("A", 100, 1, 2, 30, algorithm=algorithm)
-        runsolve("A", 200, 1, 2, 30, algorithm=algorithm)
-        runsolve("A", 300, 1, 2, 30, algorithm=algorithm)
-        runsolve("A", 400, 1, 2, 30, algorithm=algorithm)
-        runsolve("A", 500, 1, 2, 30, algorithm=algorithm)
+        df1 = runsolve("A", 100, 1, 2, 10, algorithm=algorithm)
+        df2 = runsolve("A", 200, 1, 2, 10, algorithm=algorithm)
+        df3 = runsolve("A", 300, 1, 2, 10, algorithm=algorithm)
+        df4 = runsolve("A", 400, 1, 2, 10, algorithm=algorithm)
+        df5 = runsolve("A", 500, 1, 2, 10, algorithm=algorithm)
+        df = vcat(df1, df2, df3, df4, df5)
+        CSV.write("results_$(families).csv", df)
         finished = true
     end
 
     if finished
-        exit()
+        return
     end
 
     if occursin("A", families)
@@ -182,3 +195,16 @@ function moip_experiment(
                  algorithm=algorithm)
     end
 end
+
+println("Starting family 1")
+moip_experiment("1")
+println("Starting family 2")
+moip_experiment("2")
+println("Starting family 3")
+moip_experiment("3")
+println("Starting family 4")
+moip_experiment("4")
+println("Starting family 5")
+moip_experiment("5")
+println("Starting family 6")
+moip_experiment("6")
