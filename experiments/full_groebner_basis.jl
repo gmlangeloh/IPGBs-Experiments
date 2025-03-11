@@ -23,12 +23,21 @@ function run_instance(path)
     end
 end
 
+INSTANCE_DIRS = [
+    "knapsack_binary",
+    "knapsack_unbounded",
+    "knapsack_multidimensional",
+    "set_packing",
+    "set_cover",
+    "knapsack_binary_multidimensional"
+]
+
 function all_instances()
     #Precompile stuff to avoid timing issues
     run_instance("knapsack_binary/knapsack_binary_10_1.mps")
 
     #Now run the experiments for all instances
-    for dirname in readdir()
+    for dirname in INSTANCE_DIRS
         if isdir(dirname)
             for filename in readdir(dirname, join=true)
                 if endswith(filename, ".mps")
