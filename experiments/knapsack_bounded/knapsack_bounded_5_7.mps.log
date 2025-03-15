@@ -1,0 +1,13 @@
+Algorithm statistics:
+zero_reductions => 42
+max_basis_size => 33
+queued_pairs => 0
+built_pairs => 123
+reduced_pairs => 73
+eliminated_by_truncation => 3
+removed_by_autoreduction => 0
+eliminated_by_gcd => 405
+time => 0.004318407
+memory => 0.0012030452489852905
+4ti2 results
+4ti2 time => 0.014828616
