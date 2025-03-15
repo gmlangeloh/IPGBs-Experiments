@@ -1,0 +1,52 @@
+IPGBs, no binary truncation
+Algorithm statistics:
+zero_reductions => 0
+max_basis_size => 0
+queued_pairs => 0
+built_pairs => 0
+reduced_pairs => 0
+eliminated_by_truncation => 0
+removed_by_autoreduction => 0
+eliminated_by_gcd => 190
+Project-and-Lift Stats: 
+lifts => 1
+lift_time => 0.014634307
+optimize_time => 0.0
+Algorithm statistics:
+zero_reductions => 14917668
+max_basis_size => 22359
+queued_pairs => 0
+built_pairs => 15264739
+reduced_pairs => 15264739
+eliminated_by_truncation => 323820
+removed_by_autoreduction => 933
+eliminated_by_gcd => 235781053
+time => 66.749892748
+memory => 10.938306041061878
+IPGBs, with binary truncation
+Algorithm statistics:
+zero_reductions => 0
+max_basis_size => 0
+queued_pairs => 0
+built_pairs => 0
+reduced_pairs => 0
+eliminated_by_truncation => 0
+removed_by_autoreduction => 0
+eliminated_by_gcd => 190
+Project-and-Lift Stats: 
+lifts => 1
+lift_time => 0.01558784
+optimize_time => 0.0
+Algorithm statistics:
+zero_reductions => 1114734
+max_basis_size => 22359
+queued_pairs => 0
+built_pairs => 1148108
+reduced_pairs => 1148108
+eliminated_by_truncation => 10123
+removed_by_autoreduction => 933
+eliminated_by_gcd => 249897684
+time => 25.643343087
+memory => 8.068176105618477
+4ti2 results
+4ti2 time => 60.389445244

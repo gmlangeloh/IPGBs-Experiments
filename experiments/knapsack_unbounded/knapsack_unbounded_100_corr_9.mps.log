@@ -8,8 +8,8 @@ reduced_pairs => 0
 eliminated_by_truncation => 0
 removed_by_autoreduction => 0
 eliminated_by_gcd => 0
-time => 0.01548816
-memory => 0.0033680424094200134
+time => 0.051918608
+memory => 0.07545355707406998
 IPGBs, with binary truncation
 Algorithm statistics:
 zero_reductions => 0
@@ -20,7 +20,7 @@ reduced_pairs => 0
 eliminated_by_truncation => 0
 removed_by_autoreduction => 0
 eliminated_by_gcd => 0
-time => 0.01007026
-memory => 0.0033680424094200134
+time => 0.263519344
+memory => 0.07545740157365799
 4ti2 results
-4ti2 time => 0.028194532
+4ti2 time => 0.020950085

@@ -1,0 +1,14 @@
+IPGBs, no binary truncation
+Algorithm statistics:
+zero_reductions => 0
+max_basis_size => 0
+queued_pairs => 0
+built_pairs => 0
+reduced_pairs => 0
+eliminated_by_truncation => 0
+removed_by_autoreduction => 0
+eliminated_by_gcd => 190
+Project-and-Lift Stats: 
+lifts => 1
+lift_time => 0.018916997
+optimize_time => 0.0

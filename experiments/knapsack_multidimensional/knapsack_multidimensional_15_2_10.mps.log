@@ -1,81 +1,26 @@
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
 IPGBs, no binary truncation
 Algorithm statistics:
 zero_reductions => 203
 max_basis_size => 45
-queued_pairs => 990
+queued_pairs => 0
 built_pairs => 233
 reduced_pairs => 233
 eliminated_by_truncation => 0
 removed_by_autoreduction => 0
 eliminated_by_gcd => 757
-time => 0.007903958
-memory => 0.0010357499122619629
+time => 0.007088409
+memory => 0.002532973885536194
 IPGBs, with binary truncation
 Algorithm statistics:
 zero_reductions => 203
 max_basis_size => 45
-queued_pairs => 990
+queued_pairs => 0
 built_pairs => 233
 reduced_pairs => 233
 eliminated_by_truncation => 0
 removed_by_autoreduction => 0
 eliminated_by_gcd => 757
-time => 0.005112742
-memory => 0.0010357499122619629
+time => 0.004231489
+memory => 0.002532973885536194
 4ti2 results
-4ti2 time => 0.021097913
+4ti2 time => 0.014644035

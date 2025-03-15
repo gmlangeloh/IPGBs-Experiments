@@ -1,77 +1,26 @@
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
-Long-step dual simplex will be used
 IPGBs, no binary truncation
 Algorithm statistics:
 zero_reductions => 9
 max_basis_size => 54
-queued_pairs => 1431
+queued_pairs => 0
 built_pairs => 13
 reduced_pairs => 13
 eliminated_by_truncation => 0
 removed_by_autoreduction => 0
 eliminated_by_gcd => 1418
-time => 0.011037141
-memory => 0.002234034240245819
+time => 0.01135155
+memory => 0.014330439269542694
 IPGBs, with binary truncation
 Algorithm statistics:
 zero_reductions => 9
 max_basis_size => 54
-queued_pairs => 1431
+queued_pairs => 0
 built_pairs => 13
 reduced_pairs => 13
 eliminated_by_truncation => 0
 removed_by_autoreduction => 0
 eliminated_by_gcd => 1418
-time => 0.006059435
-memory => 0.002234034240245819
+time => 0.011579461
+memory => 0.014328502118587494
 4ti2 results
-4ti2 time => 0.030559652
+4ti2 time => 0.017972832
